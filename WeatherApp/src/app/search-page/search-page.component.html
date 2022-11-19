@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="center">
+        <div class="search">
+            <form #city="ngForm" (ngSubmit) = "onSubmit(city.value)">
+            <mat-icon (click) = "onSubmit(city.value)">search</mat-icon>
+            
+            <input type="text" name="place" id="searchInput" placeholder="Wpisz miasto..." ngModel>
+        </form>
+          
+        </div>
+        
+    </div>
+
+</div>
+<router-outlet></router-outlet>

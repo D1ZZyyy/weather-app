@@ -25,6 +25,7 @@ export class WeatherService {
       params: new HttpParams()
       .set('lat', latitude)
       .set('lon', longitude)
+      .set('units', 'metric')
       .set('appid', environment.weatherAPIKey)
       .set('lang', environment.weatherAPILanguage)
     })
