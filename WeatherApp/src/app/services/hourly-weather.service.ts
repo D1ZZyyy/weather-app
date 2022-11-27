@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { weatherRoot, List } from '../model/weather-model';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class HourlyWeatherService {
   
   weatherArray: List[][] = [];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
   
   reg = "/\d\d\d\d-\d\d-/19"
   today = new Date().getDate()
@@ -21,7 +22,8 @@ export class HourlyWeatherService {
       this.weatherArray[5] = []
     
       
-    
+      
+
       var reg = new RegExp("^[0-9][0-9][0-9][0-9]-[0-9][0-9]-"+this.today);
       console.log(weather)
       let j = 1
@@ -37,13 +39,18 @@ export class HourlyWeatherService {
           this.weatherArray[0].push(weather.list[i])
           
         }else{
-          console.log("else if k:"+k+" j:"+j)
+     
           this.weatherArray[j].push(weather.list[i])
           k++
           
         }
       }
+      
       console.log(this.weatherArray)
+      this.dataService.setWeather(this.weatherArray)
+      
+      
+
 
 
 

@@ -66,4 +66,3 @@ export interface weatherRoot {
     lat: number
     lon: number
   }
-  

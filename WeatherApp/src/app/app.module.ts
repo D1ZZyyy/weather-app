@@ -11,12 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { WeatherPageComponent } from './weather-page/weather-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { WeatherPanelComponent } from './weather-panel/weather-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherPageComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    WeatherPanelComponent
   ],
   imports: [
     BrowserModule,
