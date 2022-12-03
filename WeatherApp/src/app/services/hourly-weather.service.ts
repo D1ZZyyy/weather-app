@@ -22,10 +22,10 @@ export class HourlyWeatherService {
       this.weatherArray[5] = []
     
       
-      
+     
 
-      var reg = new RegExp("^[0-9][0-9][0-9][0-9]-[0-9][0-9]-"+this.today);
-      console.log(weather)
+      var reg = new RegExp("^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9]"+this.today % 10);
+      console.log(this.today % 10)
       let j = 1
       let k = 0
       // if(weather.list[0].dt_txt)
@@ -34,9 +34,11 @@ export class HourlyWeatherService {
           j++
           k = 0
         }
+        console.log(this.today)
         if(reg.test(weather.list[i].dt_txt)){
           console.log("if")
           this.weatherArray[0].push(weather.list[i])
+
           
         }else{
      

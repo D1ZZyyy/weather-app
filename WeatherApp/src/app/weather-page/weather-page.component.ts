@@ -16,7 +16,7 @@ export class WeatherPageComponent implements OnInit {
   constructor(private weatherService: WeatherService, private data: DataService, private hourlyService: HourlyWeatherService) { }
 
   weather?: weatherRoot;
-  weekday = new Date().getDay() 
+  weekday = new Date().getDay()+1 
   today = new Date().getDate() 
   week: string[] = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
   currentdata: string[] = []
@@ -24,6 +24,7 @@ export class WeatherPageComponent implements OnInit {
   month = new Date().getMonth()
   daysInMonth= new Date(2022, this.month+1, 0).getDate()
   aaa = "aaaafsdfsdaa"
+  city!: string;
   nextWeather: number = 0
   @ViewChild("pogoda", {read: ViewContainerRef, static: true})
   pogoda!: ViewContainerRef
@@ -38,8 +39,7 @@ export class WeatherPageComponent implements OnInit {
     // this.inputs.forEach((ref: ViewContainerRef, index:number)=>
     // {ref.createComponent(WeatherPanelComponent).setInput("pogoda", current)
     // console.log("index")})
-    console.log(this.inputs.toArray()[element])
-    console.log(current[this.nextWeather].dt_txt)
+ 
     this.nextWeather++
   }
 
@@ -53,7 +53,7 @@ export class WeatherPageComponent implements OnInit {
     
     this.data.place.subscribe({next: city =>{
       console.log(city)
-      
+      this.city = city
       
       
       this.weatherService.getCoordinate(city).subscribe({

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { List, weatherRoot } from '../model/weather-model';
 import { HourlyWeatherService } from '../services/hourly-weather.service';
 import { DataService } from '../services/data.service';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-weather-panel',
@@ -23,7 +24,6 @@ export class WeatherPanelComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    console.log(this.pogoda.dt_txt)
     this.currentdata = this.pogoda.dt_txt
     this.date1= this.currentdata.split(" ")[1]
     this.weather = this.pogoda.weather[0].description
