@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { List, weatherRoot } from '../model/weather-model';
-import { HourlyWeatherService } from '../services/hourly-weather.service';
-import { DataService } from '../services/data.service';
-import {MatIconModule} from '@angular/material/icon';
+import { List } from '../model/weather-model';
+
 
 @Component({
   selector: 'app-weather-panel',
@@ -15,23 +13,24 @@ export class WeatherPanelComponent implements OnInit {
   pogoda!: List;
 
 
-  // weatherDate: string = this.pogoda.dt_txt;
   currentdata!: string ;
   currentweather: List[][] = []
   date1!: string;
   weather!: string;
   main!: string;
-  constructor(private data: DataService) { }
+  icon!: string;
+  constructor() { }
 
+  
   ngOnInit(): void {
     this.currentdata = this.pogoda.dt_txt
     this.date1= this.currentdata.split(" ")[1]
     this.weather = this.pogoda.weather[0].description
-
     this.main ="temperatura: "+ this.pogoda.main.temp+"°C, temperatura odczuwalna: "+this.pogoda.main.feels_like+"°C"
   }
 
-
-
+  font(){
+    return this.icon
+  }
 
 }
